@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rajan Kumar Singh | Portfolio</title>
+  <style>
+    /* ---------- GLOBAL STYLES ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2 {
+      color: #ffda79;
+    }
+
+    a {
+      color: #ffda79;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* ---------- NAVIGATION ---------- */
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav h1 {
+      font-size: 1.4rem;
+      color: #ffda79;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #fff;
+      border-bottom: 2px solid #ffda79;
+    }
+
+    /* ---------- MAIN CONTAINER ---------- */
+    .container {
+      max-width: 900px;
+      margin: 120px auto 40px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      animation: fadeIn 1.5s ease;
+    }
+
+    /* ---------- HEADER ---------- */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header img {
+      border-radius: 50%;
+      margin-top: 15px;
+      border: 3px solid #ffda79;
+      box-shadow: 0 0 15px rgba(255,218,121,0.5);
+      transition: transform 0.4s;
+    }
+
+    header img:hover {
+      transform: scale(1.1);
+    }
+
+    header p {
+      font-size: 1.1em;
+      color: #e0e0e0;
+      margin-top: 10px;
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 10px;
+    }
+
+    li {
+      background: rgba(255, 255, 255, 0.15);
+      margin: 8px 0;
+      padding: 10px 15px;
+      border-radius: 10px;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    li:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: scale(1.03);
+    }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      font-style: italic;
+      color: #ffda79;
+    }
+
+    /* ---------- ANIMATIONS ---------- */
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 700px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .container {
+        padding: 25px;
+        margin: 100px 10px 20px;
+      }
+
+      header img {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <nav>
+    <h1>Rajan’s Portfolio</h1>
+    <ul>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#hobbies">Hobbies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+    <header>
+      <h1>Rajan Kumar Singh</h1>
+      <p>I love to play cricket</p>
+      <img src="Image/MyImage.jpeg" alt="Rajan" height="150px">
+    </header>
+
+    <section id="education">
+      <h2>Education</h2>
+      <ul>
+        <li><b>10th Class (CBSE)</b> : 93%</li>
+        <li><b>12th Class (CBSE)</b> : 78%</li>
+        <li><b>Bachelor in Engineering (ET)</b> : 9.75</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML, CSS</li>
+        <li>App development</li>
+        <li>C++, Python</li>
+      </ul>
+    </section>
+
+    <section id="hobbies">
+      <h2>Hobbies</h2>
+      <ul>
+        <li>Cricket</li>
+        <li>Reading</li>
+        <li>Movie</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <ul>
+        <li><b>Email:</b> sujalambuj99733@gmail.com</li>
+        <li><a href="https://www.linkedin.com/in/rajankumarsingh44" target="_blank">LinkedIn</a></li>
+      </ul>
+    </section>
+
+    <footer>
+      <p>Made with &hearts; by Rajan</p>
+    </footer>
+  </div>
+
+  <script>
+    // Fade-in animation when scrolling
+    const sections = document.querySelectorAll('section');
+    const reveal = () => {
+      sections.forEach(sec => {
+        const rect = sec.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          sec.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+  </script>
+</body>
+</html>
