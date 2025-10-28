@@ -39,35 +39,45 @@
     nav {
       position: fixed;
       width: 100%;
-      top: 0;
+      top: -70px; /* Hidden initially */
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(15px);
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px 25px;
+      justify-content: space-between;
+      padding: 15px 40px;
       z-index: 100;
       box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-      flex-wrap: wrap;
+      transition: top 0.6s ease;
+      overflow-x: auto;
+      scrollbar-width: none; /* For Firefox */
+    }
+
+    nav::-webkit-scrollbar {
+      display: none; /* Hide scrollbar for Chrome */
+    }
+
+    nav.show {
+      top: 0; /* Visible after scroll */
     }
 
     nav h1 {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       color: #ffda79;
-      flex: 1 1 auto;
+      flex-shrink: 0;
     }
 
     nav ul {
       display: flex;
-      gap: 20px;
+      gap: 25px;
       list-style: none;
-      flex-wrap: wrap;
-      justify-content: flex-end;
+      flex-shrink: 0;
     }
 
     nav ul li a {
       font-weight: 500;
       transition: 0.3s;
+      white-space: nowrap; /* prevent breaking */
     }
 
     nav ul li a:hover {
@@ -78,7 +88,7 @@
     /* ---------- MAIN CONTAINER ---------- */
     .container {
       max-width: 900px;
-      margin: 100px auto 40px;
+      margin: 120px auto 40px;
       background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
       padding: 40px;
@@ -99,8 +109,6 @@
       border: 3px solid #ffda79;
       box-shadow: 0 0 15px rgba(255,218,121,0.5);
       transition: transform 0.4s;
-      max-width: 140px;
-      height: auto;
     }
 
     header img:hover {
@@ -129,7 +137,6 @@
     ul {
       list-style: none;
       margin-top: 10px;
-      padding-left: 0;
     }
 
     li {
@@ -138,7 +145,6 @@
       padding: 10px 15px;
       border-radius: 10px;
       transition: transform 0.2s, background 0.2s;
-      word-wrap: break-word;
     }
 
     li:hover {
@@ -152,7 +158,6 @@
       margin-top: 30px;
       font-style: italic;
       color: #ffda79;
-      font-size: 0.9rem;
     }
 
     /* ---------- ANIMATIONS ---------- */
@@ -162,67 +167,31 @@
     }
 
     /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 768px) {
+    @media (max-width: 700px) {
       nav {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-        padding: 10px 20px;
+        flex-direction: row;
+        gap: 15px;
+        padding: 15px 20px;
       }
 
       nav ul {
-        flex-direction: column;
-        gap: 8px;
-        width: 100%;
-        align-items: flex-start;
+        flex-wrap: nowrap;
       }
 
       .container {
-        width: 90%;
         padding: 25px;
-        margin-top: 120px;
-      }
-
-      header h1 {
-        font-size: 1.6rem;
-      }
-
-      h2 {
-        font-size: 1.3rem;
-      }
-
-      p, li {
-        font-size: 1rem;
+        margin: 100px 10px 20px;
       }
 
       header img {
-        max-width: 120px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      body {
-        font-size: 15px;
-      }
-
-      nav h1 {
-        font-size: 1.1rem;
-      }
-
-      .container {
-        padding: 20px;
-        margin-top: 130px;
-      }
-
-      header img {
-        max-width: 100px;
+        height: 120px;
       }
     }
   </style>
 </head>
 <body>
   <!-- NAVBAR -->
-  <nav>
+  <nav id="navbar">
     <h1>Rajan’s Portfolio</h1>
     <ul>
       <li><a href="#education">Education</a></li>
@@ -237,7 +206,7 @@
     <header>
       <h1>Rajan Kumar Singh</h1>
       <p>I love to play cricket</p>
-      <img src="Image/MyImage.jpeg" alt="Rajan">
+      <img src="Image/MyImage.jpeg" alt="Rajan" height="150px">
     </header>
 
     <section id="education">
@@ -245,7 +214,7 @@
       <ul>
         <li><b>10th Class (CBSE)</b> : 93%</li>
         <li><b>12th Class (CBSE)</b> : 78%</li>
-        <li><b>Bachelor in Engineering (ET)</b> : 9.75 CGPA</li>
+        <li><b>Bachelor in Engineering (ET)</b> : 9.75</li>
       </ul>
     </section>
 
@@ -253,7 +222,7 @@
       <h2>Skills</h2>
       <ul>
         <li>HTML, CSS</li>
-        <li>App Development</li>
+        <li>App development</li>
         <li>C++, Python</li>
       </ul>
     </section>
@@ -263,7 +232,7 @@
       <ul>
         <li>Cricket</li>
         <li>Reading</li>
-        <li>Movies</li>
+        <li>Movie</li>
       </ul>
     </section>
 
@@ -283,6 +252,8 @@
   <script>
     // Fade-in animation when scrolling
     const sections = document.querySelectorAll('section');
+    const navbar = document.getElementById('navbar');
+
     const reveal = () => {
       sections.forEach(sec => {
         const rect = sec.getBoundingClientRect();
@@ -290,7 +261,15 @@
           sec.classList.add('visible');
         }
       });
+
+      // Show navbar after scrolling 100px
+      if (window.scrollY > 100) {
+        navbar.classList.add('show');
+      } else {
+        navbar.classList.remove('show');
+      }
     };
+
     window.addEventListener('scroll', reveal);
     reveal();
   </script>
